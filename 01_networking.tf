@@ -7,7 +7,7 @@ resource "aws_vpc" "js_vpc" {
   enable_classiclink_dns_support = true
  
   tags = merge(var.project_tags, {
-    Name = "js_vpc"
+    Name = "demo"
   })
 }
 
@@ -16,7 +16,6 @@ resource "aws_vpc" "js_vpc" {
 resource "aws_subnet" "public_subnet" {
   vpc_id            = aws_vpc.js_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = data.aws_availability_zones.available.names[0]
   map_public_ip_on_launch = true
 
   tags = merge(var.project_tags, {
@@ -27,7 +26,6 @@ resource "aws_subnet" "public_subnet" {
 resource "aws_subnet" "private_subnet" {
   vpc_id            = aws_vpc.js_vpc.id
   cidr_block        = "10.0.2.0/24"
-  availability_zone = data.aws_availability_zones.available.names[1]
   map_public_ip_on_launch = false
 
   tags = merge(var.project_tags, {

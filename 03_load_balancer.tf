@@ -1,3 +1,5 @@
+######################## load balancer #################################
+
 resource "aws_lb" "js_lb" {
   name               = "js-lb"
   load_balancer_type = "network"
